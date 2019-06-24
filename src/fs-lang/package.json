@@ -1,0 +1,31 @@
+{
+    "name": "fs-lang",
+    "displayName": "fs-lang",
+    "description": "Language-Support for FirstSpirit",
+    "version": "0.0.1",
+    "license": "MS-PL",
+    "publisher": "nilsa",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nils-a/vscode-firstspirit"
+    },
+    "engines": {
+        "vscode": "^1.35.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "fs",
+            "aliases": ["FirstSpirit", "fs"],
+            "extensions": [""],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "fs",
+            "scopeName": "source.fs",
+            "path": "./syntaxes/fs.tmLanguage.json"
+        }]
+    }
+}
