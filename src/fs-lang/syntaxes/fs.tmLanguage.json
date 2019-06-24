@@ -1,20 +1,58 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "FirstSpirit",
+	"fileTypes": [
+		"html",
+		"xml"
+    ],
+	"name": "firstspirit",
 	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
+		{ "include": "#closetag" },
+		{ "include": "#normaltag" },
+		{ "include": "#elsetag" },
+		{ "include": "#comment" }
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.fs",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
+		"normaltag": {
+			"name": "keyword.control.fs",
+			"begin": "\\$CMS_([^\\(]+)\\((.*?)\\)\\$",
+			"end": "",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.class.fs"
+				},
+				"2":{
+					"name": "variable.name.fs",
+					"patterns": [
+						{ "include": "#strings" },
+						{ "include": "#systemobject" }		
+					]
+				}
+			}
+		},
+		"closetag": {
+			"name": "keyword.control.fs",
+			"begin": "\\$CMS_END_([^\\$]+)\\$",
+			"end": "",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.class.fs"
+				}
+			}
+		},
+		"elsetag": {
+			"name": "keyword.control.fs",
+			"begin": "\\$CMS_(ELSE)\\$",
+			"end": "",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.class.fs"
+				}
+			}
+		},
+		"comment": {
+			"name": "comment.line.fs",
+			"begin": "\\$--",
+			"end": "--\\$"
 		},
 		"strings": {
 			"name": "string.quoted.double.fs",
@@ -26,6 +64,11 @@
 					"match": "\\\\."
 				}
 			]
+		},
+		"systemobject":{
+			"name": "entity.name.class.fs",
+			"begin": "#[a-z0-9]+",
+			"end": ""
 		}
 	},
 	"scopeName": "source.fs"
