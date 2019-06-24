@@ -1,0 +1,32 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm i -g yarn vsce javascript-typescript-langserver
+  displayName: 'install yarn,vsce'
+
+- script: |
+    yarn install
+  displayName: 'yarn install'
+  workingDirectory: src/fs-lang
+
+- script: |
+    mkdir ../../bin
+    vsce package --yarn -o ../../bin/fs-lang-0.0.1.vsix
+  displayName: 'Package .vsix' 
+  workingDirectory: src/fs-lang
+  
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)/bin'
+    ArtifactName: 'artifacts'
+    publishLocation: 'Container'
