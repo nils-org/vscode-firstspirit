@@ -15,7 +15,7 @@ steps:
   displayName: 'install yarn,vsce'
 
 - script: |
-    cake.sh
+    ./build.sh
   displayName: 'start build (linux)'  
   workingDirectory: build
 
