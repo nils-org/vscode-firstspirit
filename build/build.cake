@@ -1,0 +1,72 @@
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
+#addin Cake.Yarn
+#addin Cake.VsCode
+//////////////////////////////////////////////////////////////////////
+// ARGUMENTS
+//////////////////////////////////////////////////////////////////////
+
+var target = Argument("target", "Default");
+var configuration = Argument("configuration", "Release");
+
+//////////////////////////////////////////////////////////////////////
+// PREPARATION
+//////////////////////////////////////////////////////////////////////
+
+// Define directories.
+var rootDir = Directory("./../");
+var srcDir = rootDir + Directory ("src");
+var binDir = rootDir + Directory("bin");
+
+//////////////////////////////////////////////////////////////////////
+// TASKS
+//////////////////////////////////////////////////////////////////////
+
+Task("Clean")
+    .Does(() =>
+{
+    CleanDirectory(binDir);
+});
+
+Task("Ensure tools")
+    .Does(() =>
+{
+    // HOW ?!?!
+});
+
+Task("Build")
+	
+    .DoesForEach(new []{
+		"fs-lang"
+	}, (f) =>
+{
+	var folder = srcDir + Directory(f);
+	EnsureDirectoryExists(binDir);
+	
+	Yarn.FromPath(folder).Install();
+	VscePackage(new VscePackageSettings()
+	{
+		WorkingDirectory = folder,
+		OutputFilePath = binDir + File(f+".vsix")
+	});
+});
+
+Task("Run-Unit-Tests")
+    .IsDependentOn("Build")
+    .DoesForEach(new string[]{}, (f) =>
+{
+   // run tests?
+});
+
+//////////////////////////////////////////////////////////////////////
+// TASK TARGETS
+//////////////////////////////////////////////////////////////////////
+
+Task("Default")
+	.IsDependentOn("Clean")
+    .IsDependentOn("Build");
+
+//////////////////////////////////////////////////////////////////////
+// EXECUTION
+//////////////////////////////////////////////////////////////////////
+
+RunTarget(target);

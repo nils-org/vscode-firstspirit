@@ -11,19 +11,14 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm i -g yarn vsce javascript-typescript-langserver
+    npm i -g yarn vsce
   displayName: 'install yarn,vsce'
 
-- script: |
-    yarn install
-  displayName: 'yarn install'
-  workingDirectory: src/fs-lang
-
-- script: |
-    mkdir ../../bin
-    vsce package --yarn -o ../../bin/fs-lang-0.0.1.vsix
-  displayName: 'Package .vsix' 
-  workingDirectory: src/fs-lang
+- task: Cake@0
+  inputs:
+    script: 'build/build.cake'
+    target: 'Default'
+    verbosity: 'Verbose'
   
 - task: PublishBuildArtifacts@1
   inputs:
