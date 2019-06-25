@@ -21,3 +21,12 @@ Open VS Code Run the command Extensions: Install from VSIX..., choose the vsix f
 
 ## fs-lang
 This extension adds FirstSpirit Templating-Language support.
+
+## TODO
+in no particular order:
+
+[ ] Versioning vsix in build
+[ ] auto-versioning?
+[ ] snippets in fs-lang
+[ ] deploy vsix as github-release
+[ ] deploy to marketplace
