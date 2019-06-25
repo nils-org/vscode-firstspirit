@@ -1,6 +1,8 @@
 #tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
 #addin Cake.Yarn
 #addin Cake.VsCode
+#addin nuget:?package=Newtonsoft.Json&version=10.0.3
+#addin nuget:?package=Cake.Json
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
@@ -43,10 +45,15 @@ Task("Build")
 	EnsureDirectoryExists(binDir);
 	
 	Yarn.FromPath(folder).Install();
+	
+	// version
+	var packJson = ParseJsonFromFile(folder + File("package.json"));
+	var version = packJson["version"];
+	
 	VscePackage(new VscePackageSettings()
 	{
 		WorkingDirectory = folder,
-		OutputFilePath = binDir + File(f+".vsix")
+		OutputFilePath = binDir + File($"{f}-{version}.vsix")
 	});
 });
 
