@@ -14,9 +14,8 @@
 	"repository": {
 		"normaltag": {
 			"name": "keyword.control.fs",
-			"begin": "\\$CMS_([^\\(]+)\\((.*?)\\)\\$",
-			"end": "",
-			"beginCaptures": {
+			"match": "\\$CMS_([^\\(]+)\\((.*?)\\)\\$",
+			"captures": {
 				"1": {
 					"name": "entity.name.class.fs"
 				},
@@ -24,16 +23,23 @@
 					"name": "variable.name.fs",
 					"patterns": [
 						{ "include": "#strings" },
-						{ "include": "#systemobject" }		
+						{ "include": "#systemobject" },
+						{
+							"name": "keyword.operator.arithmetic.fs",
+							"match": "%|\\*|/|-|\\+|!?==?"
+						},
+						{
+							"name": "constant.numeric.decimal.fs",
+							"match": "\\b([0-9_]+)(\\.[0-9_]*)?\\b"
+						}		
 					]
 				}
 			}
 		},
 		"closetag": {
 			"name": "keyword.control.fs",
-			"begin": "\\$CMS_END_([^\\$]+)\\$",
-			"end": "",
-			"beginCaptures": {
+			"match": "\\$CMS_END_([^\\$]+)\\$",
+			"captures": {
 				"1": {
 					"name": "entity.name.class.fs"
 				}
@@ -41,9 +47,8 @@
 		},
 		"elsetag": {
 			"name": "keyword.control.fs",
-			"begin": "\\$CMS_(ELSE)\\$",
-			"end": "",
-			"beginCaptures": {
+			"match": "\\$CMS_(ELSE)\\$",
+			"captures": {
 				"1": {
 					"name": "entity.name.class.fs"
 				}
@@ -67,8 +72,7 @@
 		},
 		"systemobject":{
 			"name": "entity.name.class.fs",
-			"begin": "#[a-z0-9]+",
-			"end": ""
+			"match": "#[a-z0-9]+"
 		}
 	},
 	"scopeName": "source.fs"
