@@ -1,0 +1,94 @@
+{
+    "cms_for": {
+        "prefix": "cms-for",
+        "body": [
+          "\\$CMS_FOR(${1:identifyer}, ${2:object})\\$",
+          "\\$CMS_END_FOR\\$"
+        ],
+        "description": "For Loop"
+    },
+    "cms_set": {
+		"prefix": "cms-set",
+		"body": [
+			"\\$CMS_SET(${1:identifyer}, ${2:object})\\$"
+		],
+		"description": "Set a Variable"
+	},
+	"cms_set_long": {
+		"prefix": "cms-set-long",
+		"body": [
+			"\\$CMS_SET(${1:identifyer})\\$${2:object}\\$CMS_END_SET\\$"
+		],
+		"description": "Set a Variable"
+    },
+    "cms_if": {
+		"prefix": "cms-if",
+		"body": [
+			"\\$CMS_IF(${1:condition})\\$",
+            "\\$CMS_END_IF\\$"
+		],
+		"description": "If condition"
+    },
+    "cms_if_long": {
+		"prefix": "cms-if-elseif",
+		"body": [
+			"\\$CMS_IF(${1:condition})\\$",
+			"\\$CMS_ELSEIF(${2:nexCondition})\\$",
+			"\\$CMS_ELSE\\$",
+            "\\$CMS_END_IF\\$"
+		],
+		"description": "If condition with 'full' else-if/else"
+    },
+    "cms_include": {
+		"prefix": "cms-include",
+		"body": [
+			"\\$CMS_INCLUDE(${1:identifyer}, parse:${2:bool}, encoding:${3:endcoding}, language:${4:lang})\\$"
+		],
+		"description": "Insert contents of a file from the Media Store into a template"
+    },
+    "cms_ref": {
+		"prefix": "cms-ref",
+		"body": [
+			"\\$CMS_REF(${1:identifyer})\\$"
+        ],
+		"description": "Resolve a reference"
+    },
+    "cms_render": {
+		"prefix": "cms-render",
+		"body": [
+			"\\$CMS_RENDER(${1:|template,script|:${2:identifyer})\\$"
+        ],
+		"description": "Integrate the content of a format template or invoke a script"
+    },
+    "cms_switch": {
+		"prefix": "cms-switch",
+		"body": [
+			"\\$CMS_SWITCH(${1:object})\\$",
+            "\\$CMS_END_SWITCH\\$"
+		],
+		"description": "Switch block"
+    },
+    "cms_switch_case": {
+		"prefix": "cms-case",
+		"body": [
+			"\\$CMS_CASE(${1:object})\\$"
+		],
+		"description": "Case statement (inside switch block)"
+    },
+    "cms_trim": {
+		"prefix": "cms-trim",
+		"body": [
+            "\\$CMS_TRIM(level:${1:level}, char:${2:char})\\$",
+            "${3:content}",
+            "\\$CMS_END_TRIM\\$"
+		],
+		"description": "trim"
+    },
+    "cms_value": {
+		"prefix": "cms-value",
+		"body": [
+            "\\$CMS_VALUE(${1:object})\\$",
+		],
+		"description": "Access the value"
+    }
+}

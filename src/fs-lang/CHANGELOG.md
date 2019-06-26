@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 - Language grammar
+- snippets
 
 ## Format
 * see https://keepachangelog.com/

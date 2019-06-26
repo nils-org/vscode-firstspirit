@@ -16,9 +16,7 @@
     "engines": {
         "vscode": "^1.35.0"
     },
-    "categories": [
-        "Programming Languages"
-    ],
+    "categories": [ "Programming Languages", "Snippets" ],
     "contributes": {
         "languages": [{
             "id": "fs",
@@ -30,6 +28,10 @@
             "language": "fs",
             "scopeName": "source.fs",
             "path": "./syntaxes/fs.tmLanguage.json"
+        }],
+        "snippets": [{
+            "language": "fs",
+            "path": "./snippets/fs.json"
         }]
     }
 }
