@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 - Language grammar
-- snippets
+- code-snippets
 
 ## Format
 * see https://keepachangelog.com/

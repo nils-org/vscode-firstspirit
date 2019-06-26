@@ -2,7 +2,7 @@
     "name": "fs-lang",
     "displayName": "FirstSpirit",
     "description": "view and edit FirstSpirit templates-tags in Visual Studio Code",
-    "version": "0.0.3-alpha",
+    "version": "0.0.4-alpha",
     "license": "MS-PL",
     "publisher": "nilsa",
     "icon": "logo.png",
