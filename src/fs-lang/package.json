@@ -1,10 +1,14 @@
 {
     "name": "fs-lang",
-    "displayName": "fs-lang",
-    "description": "Language-Support for FirstSpirit",
-    "version": "0.0.1",
+    "displayName": "FirstSpirit",
+    "description": "view and edit FirstSpirit templates-tags in Visual Studio Code",
+    "version": "0.0.3-alpha",
     "license": "MS-PL",
     "publisher": "nilsa",
+    "icon": "logo.png",
+    "galleryBanner": {
+        "color": "#930B54"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/nils-a/vscode-firstspirit"
