@@ -5,12 +5,16 @@
 The FirstSpirit extension for Visual Studio Code provides the following features inside VS Code:
 
 * Syntax-Highlighting of FirstSpirit template-tags
+* Code-Snippets
 
 ### Get Started 
 
 TODO: Add some images and stuff
+explain why there is no file-extensions..
 
 ### What's to come
 
-* Code-Snippets
+* Hover/Tooltips/Signature-Help
+* Auto-complete
+* better folding
 * support for external sychronization
