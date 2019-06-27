@@ -59,7 +59,7 @@
     "cms_render": {
 		"prefix": "cms-render",
 		"body": [
-			"\\$CMS_RENDER(${1:|template,script|:${2:identifyer})\\$"
+			"\\$CMS_RENDER(${1|template,script|}:\"${2:identifyer})\"\\$"
         ],
 		"description": "Integrate the content of a format template or invoke a script"
     },
