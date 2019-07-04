@@ -20,6 +20,11 @@ steps:
   displayName: 'start build (linux)'  
   workingDirectory: build
 
+- script: |
+    ./build.sh TagMaster
+    git push --tags
+  displayName: 'tag on master!'  
+  workingDirectory: build
   
 - task: PublishBuildArtifacts@1
   inputs:
