@@ -3,6 +3,8 @@
 #addin Cake.VsCode
 #addin nuget:?package=Newtonsoft.Json&version=10.0.3
 #addin nuget:?package=Cake.Json
+#addin nuget:?package=Cake.Git
+
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
@@ -55,6 +57,24 @@ Task("Build")
 		WorkingDirectory = folder,
 		OutputFilePath = binDir + File($"{f}-{version}.vsix")
 	});
+	
+	// Add Tag?!
+	Information($"Current version is: {version}");
+	var tagExists = false;
+	var tags = GitTags(rootDir);
+	foreach(var t in tags) {
+		if(t.ToString().EndsWith(version.ToString())){
+			tagExists = true;
+			break;
+		}
+	}
+	
+	if(tagExists){
+		Warning($"tag for version {version} already in git.");
+	} else {
+		Information($"creating git-tag for version {version}.");
+		GitTag(rootDir, version.ToString());
+	}
 });
 
 Task("Run-Unit-Tests")
