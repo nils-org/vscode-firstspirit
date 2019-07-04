@@ -57,6 +57,11 @@ Task("Build")
 		WorkingDirectory = folder,
 		OutputFilePath = binDir + File($"{f}-{version}.vsix")
 	});
+	
+	// update Build.BuildNumber to reflect the current version
+	Information($"##vso[PACKAGEVERSION]{version}");
+	var buildId = EnvironmentVariable("BUILD_BUILDID") ?? DateTime.Now.ToString("yyyyMMddHHmmss");
+	Information($"##vso[build.updatebuildnumber]{version}-{buildId}");
 });
 
 Task("TagMaster")
