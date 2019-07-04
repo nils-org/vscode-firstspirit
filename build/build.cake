@@ -59,8 +59,9 @@ Task("Build")
 	});
 	
 	// update Build.BuildNumber to reflect the current version
-	Information($"##vso[PACKAGEVERSION]{version}")
-	Information($"##vso[build.updatebuildnumber]{version}-{EnvironmentVariable("Build.BuildId")}")
+	Information($"##vso[PACKAGEVERSION]{version}");
+	var buildId = EnvironmentVariable("Build.BuildId") ?? DateTime.Now.ToString("yyyyMMddHHmmss");
+	Information($"##vso[build.updatebuildnumber]{version}-{buildId}");
 });
 
 Task("TagMaster")
