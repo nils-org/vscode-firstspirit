@@ -25,7 +25,4 @@ This extension adds FirstSpirit Templating-Language support.
 ## TODO
 in no particular order:
 
- * snippets in fs-lang
- * deploy vsix as github-release
- * deploy to marketplace
- * auto-versioning?
+ * better highlighting, folding, auto-complete
