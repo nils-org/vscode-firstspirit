@@ -67,17 +67,11 @@
 		"prefix": "cms-switch",
 		"body": [
             "\\$CMS_SWITCH(${1:object})\\$",
-            "$0",
+			"$0",
+			"\\$CMS_CASE(${2:object})\\$",
             "\\$CMS_END_SWITCH\\$"
 		],
 		"description": "Switch block"
-    },
-    "cms_switch_case": {
-		"prefix": "cms-case",
-		"body": [
-			"\\$CMS_CASE(${1:object})\\$"
-		],
-		"description": "Case statement (inside switch block)"
     },
     "cms_trim": {
 		"prefix": "cms-trim",
