@@ -86,8 +86,9 @@ Task("TagMaster")
 		}
 	}
 
-	GitTag(rootDir, version.ToString());
-	// do NOT push automatically!
+	//GitTag(rootDir, version.ToString());
+	// create a varible for VSO / DevOps to be used in following steps.
+	Informaton($"##vso[task.setvariable variable=TAGVERSION]{version}");
 });
 
 Task("Run-Unit-Tests")
