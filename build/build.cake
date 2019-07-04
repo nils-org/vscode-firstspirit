@@ -61,7 +61,7 @@ Task("Build")
 	// update Build.BuildNumber to reflect the current version
 	Information($"##vso[task.setvariable variable=FS_PACKAGEVERSION]{version}");
 	var buildNum = EnvironmentVariable("BUILD_BUILDNUMBER") ?? DateTime.Now.ToString("yyyyMMddHHmmss");
-	Information($"##vso[build.updatebuildnumber]{version}-{buildId}");
+	Information($"##vso[build.updatebuildnumber]{version}-{buildNum}");
 	
 	// check for tag-conflict..
 	var tagExists = "0";
