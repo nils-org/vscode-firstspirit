@@ -59,41 +59,20 @@ Task("Build")
 	});
 	
 	// update Build.BuildNumber to reflect the current version
-	Information($"##vso[PACKAGEVERSION]{version}");
-	var buildId = EnvironmentVariable("BUILD_BUILDID") ?? DateTime.Now.ToString("yyyyMMddHHmmss");
-	Information($"##vso[build.updatebuildnumber]{version}-{buildId}");
-});
-
-Task("TagMaster")
-	.Does(() => 
-{
-	var branch = GitBranchCurrent(rootDir).FriendlyName;
-	if(branch != "master"){
-		Information($"Skipping tag-creation for branch:{branch}");
-		return;
-	}
+	Information($"##vso[task.setvariable variable=FS_PACKAGEVERSION]{version}");
+	var buildNum = EnvironmentVariable("BUILD_BUILDNUMBER") ?? DateTime.Now.ToString("yyyyMMddHHmmss");
+	Information($"##vso[build.updatebuildnumber]{version}-{buildNum}");
 	
-	// version
-	var packJson = ParseJsonFromFile(srcDir + File("fs-lang/package.json"));
-	var version = packJson["version"].ToString();
-		
-	Information($"Creating tag {version}");
-		
-	// Add Tag?!
-	Information($"Current version is: {version}");
-	var tagExists = false;
+	// check for tag-conflict..
+	var tagExists = "0";
 	var tags = GitTags(rootDir);
 	foreach(var t in tags) {
-		if(t.ToString().EndsWith(version)){
-			var err = $"tag {version} already exists in {t.ToString()}"; 
-			Error(err);
-			throw new Exception(err);
+		if(t.ToString().EndsWith(version.ToString())){
+			tagExists = "1";
+			break;
 		}
 	}
-
-	//GitTag(rootDir, version.ToString());
-	// create a varible for VSO / DevOps to be used in following steps.
-	Information($"##vso[task.setvariable variable=TAGVERSION]{version}");
+	Information($"##vso[task.setvariable variable=FS_TAGCONFLICT]{tagExists}");
 });
 
 Task("Run-Unit-Tests")
