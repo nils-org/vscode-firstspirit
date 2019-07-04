@@ -58,21 +58,20 @@ Task("Build")
 		OutputFilePath = binDir + File($"{f}-{version}.vsix")
 	});
 	
-	// update Build.BuildNumber to reflect the current version
-	Information($"##vso[task.setvariable variable=FS_PACKAGEVERSION]{version}");
-	var buildNum = EnvironmentVariable("BUILD_BUILDNUMBER") ?? DateTime.Now.ToString("yyyyMMddHHmmss");
-	Information($"##vso[build.updatebuildnumber]{version}-{buildNum}");
-	
+    // write version info-json that a release-pipeline can read. 
 	// check for tag-conflict..
-	var tagExists = "0";
+	var tagExists = false;
 	var tags = GitTags(rootDir);
 	foreach(var t in tags) {
 		if(t.ToString().EndsWith(version.ToString())){
-			tagExists = "1";
+			tagExists = true;
 			break;
 		}
 	}
-	Information($"##vso[task.setvariable variable=FS_TAGCONFLICT]{tagExists}");
+	SerializeJsonToFile(binDir + File($"version.json"), new{
+		Version = version,
+		TagConflict = tagExists
+	});
 });
 
 Task("Run-Unit-Tests")
