@@ -57,6 +57,10 @@ Task("Build")
 		WorkingDirectory = folder,
 		OutputFilePath = binDir + File($"{f}-{version}.vsix")
 	});
+	
+	// update Build.BuildNumber to reflect the current version
+	Information($"##vso[PACKAGEVERSION]{version}")
+	Information($"##vso[build.updatebuildnumber]{version}-{EnvironmentVariable("Build.BuildId")}")
 });
 
 Task("TagMaster")
