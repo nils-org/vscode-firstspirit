@@ -2,6 +2,9 @@ trigger:
 - master
 - develop
 
+variables:
+- group: default
+
 pool:
   vmImage: 'ubuntu-latest'
 
