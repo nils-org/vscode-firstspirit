@@ -57,24 +57,38 @@ Task("Build")
 		WorkingDirectory = folder,
 		OutputFilePath = binDir + File($"{f}-{version}.vsix")
 	});
+});
+
+Task("TagMaster")
+	.Does(() => 
+{
+	var branch = GitBranchCurrent(rootDir).FriendlyName;
+	if(branch != "master"){
+		Information($"Skipping tag-creation for branch:{branch}");
+		return;
+	}
 	
+	// version
+	var packJson = ParseJsonFromFile(srcDir + File("fs-lang/package.json"));
+	var version = packJson["version"].ToString();
+		
+	Information($"Creating tag {version}");
+		
 	// Add Tag?!
 	Information($"Current version is: {version}");
 	var tagExists = false;
 	var tags = GitTags(rootDir);
 	foreach(var t in tags) {
-		if(t.ToString().EndsWith(version.ToString())){
-			tagExists = true;
-			break;
+		if(t.ToString().EndsWith(version)){
+			var err = $"tag {version} already exists in {t.ToString()}"; 
+			Error(err);
+			throw new Exception(err);
 		}
 	}
-	
-	if(tagExists){
-		Warning($"tag for version {version} already in git.");
-	} else {
-		Information($"creating git-tag for version {version}.");
-		GitTag(rootDir, version.ToString());
-	}
+
+	//GitTag(rootDir, version.ToString());
+	// create a varible for VSO / DevOps to be used in following steps.
+	Information($"##vso[task.setvariable variable=TAGVERSION]{version}");
 });
 
 Task("Run-Unit-Tests")
