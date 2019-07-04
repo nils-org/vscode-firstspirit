@@ -60,7 +60,7 @@ Task("Build")
 	
 	// update Build.BuildNumber to reflect the current version
 	Information($"##vso[PACKAGEVERSION]{version}");
-	var buildId = EnvironmentVariable("Build.BuildId") ?? EnvironmentVariable("BUILD.BUILDID") ?? DateTime.Now.ToString("yyyyMMddHHmmss");
+	var buildId = EnvironmentVariable("BUILD_BUILDID") ?? DateTime.Now.ToString("yyyyMMddHHmmss");
 	Information($"##vso[build.updatebuildnumber]{version}-{buildId}");
 });
 
