@@ -1,9 +1,6 @@
 import { ExtensionContext,languages } from "vscode";
-
-import { FsHoverProvider } from "./hoverProvider"
+import { FsFoldingProvider } from "./foldingProvider"
 
 export function activate(context: ExtensionContext): void {
-    console.log("FS-Extension is activated!");
-
-    context.subscriptions.push(languages.registerHoverProvider("fs", new FsHoverProvider));
+    context.subscriptions.push(languages.registerFoldingRangeProvider("fs", new FsFoldingProvider));
 }
