@@ -25,4 +25,4 @@ This extension adds FirstSpirit Templating-Language support.
 ## TODO
 in no particular order:
 
- * better highlighting, folding, auto-complete
+ * better highlighting, auto-complete

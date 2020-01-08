@@ -1,6 +1,6 @@
 # Microsoft Public License (MS-PL)
 
-Copyright (c) 2019 Nils Andresen
+Copyright (c) 2019,2020 Nils Andresen
 
 This license governs use of the accompanying software. 
 If you use the software, you accept this license. 
