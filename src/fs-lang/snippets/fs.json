@@ -2,7 +2,7 @@
     "cms_for": {
         "prefix": "cms-for",
         "body": [
-          "\\$CMS_FOR(${1:identifyer}, ${2:object})\\$",
+          "\\$CMS_FOR(${1:identifier}, ${2:object})\\$",
           "$0",
           "\\$CMS_END_FOR\\$"
         ],
@@ -11,14 +11,14 @@
     "cms_set": {
 		"prefix": "cms-set",
 		"body": [
-			"\\$CMS_SET(${1:identifyer}, ${2:object})\\$"
+			"\\$CMS_SET(${1:identifier}, ${2:object})\\$"
 		],
 		"description": "Set a Variable"
 	},
 	"cms_set_long": {
 		"prefix": "cms-set-long",
 		"body": [
-			"\\$CMS_SET(${1:identifyer})\\$${2:object}\\$CMS_END_SET\\$"
+			"\\$CMS_SET(${1:identifier})\\$${2:object}\\$CMS_END_SET\\$"
 		],
 		"description": "Set a Variable"
     },
@@ -45,21 +45,21 @@
     "cms_include": {
 		"prefix": "cms-include",
 		"body": [
-			"\\$CMS_INCLUDE(${1:identifyer}, parse:${2:bool}, encoding:${3:endcoding}, language:${4:lang})\\$"
+			"\\$CMS_INCLUDE(${1:identifier}, parse:${2:bool}, encoding:${3:endcoding}, language:${4:lang})\\$"
 		],
 		"description": "Insert contents of a file from the Media Store into a template"
     },
     "cms_ref": {
 		"prefix": "cms-ref",
 		"body": [
-			"\\$CMS_REF(${1:identifyer})\\$"
+			"\\$CMS_REF(${1:identifier})\\$"
         ],
 		"description": "Resolve a reference"
     },
     "cms_render": {
 		"prefix": "cms-render",
 		"body": [
-			"\\$CMS_RENDER(${1|template,script|}:\"${2:identifyer})\"\\$"
+			"\\$CMS_RENDER(${1|template,script|}:\"${2:identifier})\"\\$"
         ],
 		"description": "Integrate the content of a format template or invoke a script"
     },
