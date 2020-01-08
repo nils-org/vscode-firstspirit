@@ -1,6 +1,6 @@
 ## FirstSpirit for Visual Studio Code
 
-![GitHub](https://img.shields.io/github/license/nils-a/vscode-firstspirit.svg) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/nils-andresen/10aa4f78-64ea-4ea1-888b-c7bd518743a5/2.svg) [![Marketplace Version](https://vsmarketplacebadge.apphb.com/version-short/nilsa.fs-lang.svg)](https://marketplace.visualstudio.com/items?itemName=nilsa.fs-lang) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/nilsa.fs-lang.svg)](https://marketplace.visualstudio.com/items?itemName=nilsa.fs-lang)
+![GitHub](https://img.shields.io/github/license/nils-org/vscode-firstspirit.svg) ![Azure DevOps builds](https://img.shields.io/azure-devops/build/nils-orgndresen/10aa4f78-64ea-4ea1-888b-c7bd518743a5/2.svg) [![Marketplace Version](https://vsmarketplacebadge.apphb.com/version-short/nilsa.fs-lang.svg)](https://marketplace.visualstudio.com/items?itemName=nilsa.fs-lang) [![Installs](https://vsmarketplacebadge.apphb.com/installs-short/nilsa.fs-lang.svg)](https://marketplace.visualstudio.com/items?itemName=nilsa.fs-lang)
 
 The FirstSpirit extension for Visual Studio Code provides the following features inside VS Code:
 

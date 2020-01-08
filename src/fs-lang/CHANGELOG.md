@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - fixed link error in Changelog
+- moved repo from private (nils-a) to organization (nils-org)
 
 ## [0.2.0] - 2020-01-08
 ### Added
@@ -19,6 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Language grammar
 - code-snippets
 
-[Unreleased]: https://github.com/nils-a/vscode-firstspirit/compare/master...develop
-[0.2.0]: https://github.com/nils-a/vscode-firstspirit/compare/master@%7B2019-07-04%7D...0.2.0
-[0.1.0]: https://github.com/nils-a/vscode-firstspirit/tree/master@%7B2019-07-04%7D
+[Unreleased]: https://github.com/nils-org/vscode-firstspirit/compare/master...develop
+[0.2.0]: https://github.com/nils-org/vscode-firstspirit/compare/master@%7B2019-07-04%7D...0.2.0
+[0.1.0]: https://github.com/nils-org/vscode-firstspirit/tree/master@%7B2019-07-04%7D
